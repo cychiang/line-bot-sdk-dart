@@ -31,7 +31,6 @@ void handleRequest(HttpRequest request, WebhookParser webhookParser, LineBotApi 
     var message = webhookParser.parser(
         content.toString(), request.headers['x-line-signature'][0]);
     if (message.events.isNotEmpty) {
-      print('message events');
       var textMessage = TextMessage(
         type: 'text',
         text: 'Hello World'
@@ -40,8 +39,7 @@ void handleRequest(HttpRequest request, WebhookParser webhookParser, LineBotApi 
         replyToken: message.events[0].replyToken,
         messages: [textMessage.toJson()],
       );
-      var response = await lineBotApi.replyMessage(message.events[0].replyToken, replyMessage);
-      print(response.body);
+      await lineBotApi.replyMessage(message.events[0].replyToken, replyMessage);
     }
 
     response
