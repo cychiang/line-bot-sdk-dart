@@ -11,9 +11,9 @@ void main() {
     setUp(() async {
       body = await File('${Directory.current.path}/test/text/webhook.json')
           .readAsStringSync();
-      signatureValidator = SignatureValidator('channel_secret');
-      webhookParser = WebhookParser('channel_secret');
-      webhookEventObjects = webhookParser.parser(body, 'channel_secret', true);
+      signatureValidator = SignatureValidator('channel_secret', false);
+      webhookParser = WebhookParser('channel_secret', skipValidator: true);
+      webhookEventObjects = webhookParser.parser(body, 'channel_secret');
     });
     test('Validate Signature...', () {
       expect(
