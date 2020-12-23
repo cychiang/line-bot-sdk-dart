@@ -25,35 +25,11 @@ class WebhookParser {
   WebhookParser(String channelSecret, {bool skipValidator = false})
       : signatureValidator = SignatureValidator(channelSecret, skipValidator);
 
-  WebhookEventObjects parser(String body, String signature) {
+  WebhookEvent parser(String body, String signature) {
     if (!signatureValidator.validate(body, signature)) {
       throw InvalidSignatureError('Invalid signature. signature=$signature');
     }
-    Map decodeBody = jsonDecode(body);
-    WebhookEvent webhookEvent;
-    if (decodeBody.containsKey('events') && decodeBody.containsKey('destination')) {
-      webhookEvent = WebhookEvent.fromJson(decodeBody);
-    }
-    if (webhookEvent.events.isNotEmpty){
-      print('events not empty');
-      webhookEvent.events.forEach((element) {
-        print(element);
-      });
-    } else {
-      // return normal webhookevnet
-      print('events list is empty');
-    }
-
-    // webhookEvent.events.forEach((event) {
-    //
-    // });
-
-
-    // Map decodeBody = jsonDecode(body);
-    // print(decodeBody['events']);
-    // print(decodeBody['events'].runtimeType);
-
-    return WebhookEventObjects.fromJson(decodeBody);
+    return WebhookEvent.fromJson(jsonDecode(body));
   }
 }
 

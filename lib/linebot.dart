@@ -5,6 +5,6 @@ library linebot;
 
 export 'src/api/message.dart';
 export 'src/api/webhook.dart';
-export 'src/models/webhook_event_objects.dart';
+export 'src/models/events.dart';
 
 const version = '0.0.1';

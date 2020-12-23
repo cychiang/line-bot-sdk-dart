@@ -22,6 +22,7 @@ Map<String, dynamic> _$EmojisToJson(Emojis instance) => <String, dynamic>{
 
 TextMessage _$TextMessageFromJson(Map<String, dynamic> json) {
   return TextMessage(
+    id: json['id'] as String,
     type: json['type'] as String,
     text: json['text'] as String,
     emojis: (json['emojis'] as List)
@@ -33,6 +34,7 @@ TextMessage _$TextMessageFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$TextMessageToJson(TextMessage instance) {
   final val = <String, dynamic>{
+    'id': instance.id,
     'type': instance.type,
     'text': instance.text,
   };
