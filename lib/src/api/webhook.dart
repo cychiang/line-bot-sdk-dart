@@ -1,9 +1,9 @@
-import '../exceptions.dart';
-import '../models/webhook_event_objects.dart';
-import '../models/events.dart';
 import 'dart:convert' show base64Encode, jsonDecode, utf8;
 
 import 'package:crypto/crypto.dart';
+
+import '../exceptions.dart';
+import '../models/events/webhook_event.dart';
 
 class SignatureValidator {
   List<int> channelSecret;

@@ -1,8 +1,3 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:line_bot_sdk_dart/src/models/reply_message.dart';
-import '../../linebot.dart';
-
 class LineBotApi {
   static const defaultApiEndpoint = 'https://api.line.me';
   static const defaultApiDataEndpoint = 'https://api-data.line.me';
@@ -25,12 +20,12 @@ class LineBotApi {
       'Content-Type': 'application/json',
     };
   }
-  Future<http.Response> replyMessage(
-      String replyToken, ReplyMessage replyMessage) async {
-    print(jsonEncode(replyMessage));
-    var response = await http
-        .post(endpoint + '/v2/bot/message/reply',
-            headers: headers, body: jsonEncode(replyMessage));
-    return response;
-  }
+  // Future<http.Response> replyMessage(
+  //     String replyToken, ReplyMessage replyMessage) async {
+  //   print(jsonEncode(replyMessage));
+  //   var response = await http
+  //       .post(endpoint + '/v2/bot/message/reply',
+  //           headers: headers, body: jsonEncode(replyMessage));
+  //   return response;
+  // }
 }

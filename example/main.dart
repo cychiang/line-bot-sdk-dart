@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'dart:convert';
 import 'package:line_bot_sdk_dart/linebot.dart';
-import 'package:line_bot_sdk_dart/src/models/message_objects.dart';
-import 'package:line_bot_sdk_dart/src/models/reply_message.dart';
+// import 'package:line_bot_sdk_dart/src/models/legacy/message_objects.dart';
+// import 'package:line_bot_sdk_dart/src/models/reply_message.dart';
 
 Future main() async {
   var server = await HttpServer.bind(
@@ -31,15 +31,15 @@ void handleRequest(HttpRequest request, WebhookParser webhookParser, LineBotApi 
     var message = webhookParser.parser(
         content.toString(), request.headers['x-line-signature'][0]);
     if (message.events.isNotEmpty) {
-      var textMessage = TextMessage(
-        type: 'text',
-        text: 'Hello World'
-      );
-      var replyMessage = ReplyMessage(
-        replyToken: message.events[0].replyToken,
-        messages: [textMessage.toJson()],
-      );
-      await lineBotApi.replyMessage(message.events[0].replyToken, replyMessage);
+      // var textMessage = TextMessage(
+      //   type: 'text',
+      //   text: 'Hello World'
+      // );
+      // var replyMessage = ReplyMessage(
+      //   replyToken: message.events[0].replyToken,
+      //   messages: [textMessage.toJson()],
+      // );
+      // await lineBotApi.replyMessage(message.events[0].replyToken, replyMessage);
     }
 
     response
