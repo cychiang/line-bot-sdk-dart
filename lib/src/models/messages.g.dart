@@ -35,3 +35,21 @@ Map<String, dynamic> _$ReplyMessageToJson(ReplyMessage instance) =>
       'messages': instance.messages,
       'notificationDisabled': instance.notificationDisabled,
     };
+
+PushMessage _$PushMessageFromJson(Map<String, dynamic> json) {
+  return PushMessage(
+    to: (json['to'] as List)?.map((e) => e as String)?.toList(),
+    messages: (json['messages'] as List)
+        ?.map((e) =>
+            e == null ? null : Message.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    notificationDisabled: json['notificationDisabled'] as bool ?? false,
+  );
+}
+
+Map<String, dynamic> _$PushMessageToJson(PushMessage instance) =>
+    <String, dynamic>{
+      'to': instance.to,
+      'messages': instance.messages,
+      'notificationDisabled': instance.notificationDisabled,
+    };
