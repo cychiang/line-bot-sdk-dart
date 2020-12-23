@@ -1,17 +1,16 @@
-import 'package:json_annotation/json_annotation.dart';
-
-part 'reply_message.g.dart';
+part of '../messages.dart';
 
 @JsonSerializable()
 class ReplyMessage {
   @JsonKey(name: 'replyToken')
   String replyToken;
   @JsonKey(name: 'messages')
-  List<Map<String, dynamic>> messages;
-  @JsonKey(name: 'notificationDisabled', includeIfNull: false)
+  List<Message> messages;
+  @JsonKey(name: 'notificationDisabled', defaultValue: false)
   bool notificationDisabled;
 
   ReplyMessage({this.replyToken, this.messages, this.notificationDisabled});
+
   factory ReplyMessage.fromJson(Map<String, dynamic> json) =>
       _$ReplyMessageFromJson(json);
 

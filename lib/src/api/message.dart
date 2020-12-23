@@ -1,7 +1,14 @@
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+
 class LineBotApi {
   static const defaultApiEndpoint = 'https://api.line.me';
   static const defaultApiDataEndpoint = 'https://api-data.line.me';
   static const defaultTimeout = 30;
+  static const apiVersion = '/v2';
+  static const sendReplyMessage =
+      defaultApiDataEndpoint + apiVersion + '/bot/message/reply';
   String channelAccessToken;
   String endpoint;
   String dataEndpoint;
@@ -28,4 +35,11 @@ class LineBotApi {
   //           headers: headers, body: jsonEncode(replyMessage));
   //   return response;
   // }
+
+  Future<http.Response> _post(
+      String url, Map<String, String> headers, String body) async {
+    var response =
+        await http.post(url, headers: headers, body: jsonEncode(body));
+    return response;
+  }
 }

@@ -6,6 +6,78 @@ part of 'events.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+Link _$LinkFromJson(Map<String, dynamic> json) {
+  return Link(
+    result: json['result'] as String,
+    nonce: json['nonce'] as String,
+  );
+}
+
+Map<String, dynamic> _$LinkToJson(Link instance) => <String, dynamic>{
+      'result': instance.result,
+      'nonce': instance.nonce,
+    };
+
+AccountLinkEvent _$AccountLinkEventFromJson(Map<String, dynamic> json) {
+  return AccountLinkEvent(
+    replyToken: json['replyToken'] as String,
+    type: json['type'] as String,
+    mode: json['mode'] as String,
+    timestamp: json['timestamp'] as int,
+    source: _SourceInstance(json['source'] as Map<String, dynamic>),
+    link: json['link'] == null
+        ? null
+        : Link.fromJson(json['link'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$AccountLinkEventToJson(AccountLinkEvent instance) =>
+    <String, dynamic>{
+      'replyToken': instance.replyToken,
+      'type': instance.type,
+      'mode': instance.mode,
+      'timestamp': instance.timestamp,
+      'source': instance.source,
+      'link': instance.link,
+    };
+
+Beacon _$BeaconFromJson(Map<String, dynamic> json) {
+  return Beacon(
+    hwid: json['hwid'] as String,
+    type: json['type'] as String,
+    dm: json['dm'] as String,
+  );
+}
+
+Map<String, dynamic> _$BeaconToJson(Beacon instance) => <String, dynamic>{
+      'hwid': instance.hwid,
+      'type': instance.type,
+      'dm': instance.dm,
+    };
+
+BeaconEvent _$BeaconEventFromJson(Map<String, dynamic> json) {
+  return BeaconEvent(
+    replyToken: json['replyToken'] as String,
+    type: json['type'] as String,
+    mode: json['mode'] as String,
+    timestamp: json['timestamp'] as int,
+    source: _SourceInstance(json['source'] as Map<String, dynamic>),
+    beacon: json['beacon'] == null
+        ? null
+        : Beacon.fromJson(json['beacon'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$BeaconEventToJson(BeaconEvent instance) =>
+    <String, dynamic>{
+      'replyToken': instance.replyToken,
+      'type': instance.type,
+      'mode': instance.mode,
+      'timestamp': instance.timestamp,
+      'source': instance.source,
+      'beacon': instance.beacon,
+    };
+
 Emojis _$EmojisFromJson(Map<String, dynamic> json) {
   return Emojis(
     index: json['index'] as int,
@@ -224,27 +296,6 @@ Map<String, dynamic> _$SourceRoomToJson(SourceRoom instance) =>
       'userId': instance.userId,
     };
 
-MessageEvent _$MessageEventFromJson(Map<String, dynamic> json) {
-  return MessageEvent(
-    replyToken: json['replyToken'] as String,
-    type: json['type'] as String,
-    mode: json['mode'] as String,
-    timestamp: json['timestamp'] as int,
-    source: _SourceInstance(json['source'] as Map<String, dynamic>),
-    message: _MessageInstance(json['message'] as Map<String, dynamic>),
-  );
-}
-
-Map<String, dynamic> _$MessageEventToJson(MessageEvent instance) =>
-    <String, dynamic>{
-      'replyToken': instance.replyToken,
-      'type': instance.type,
-      'mode': instance.mode,
-      'timestamp': instance.timestamp,
-      'source': instance.source,
-      'message': instance.message,
-    };
-
 FollowEvent _$FollowEventFromJson(Map<String, dynamic> json) {
   return FollowEvent(
     replyToken: json['replyToken'] as String,
@@ -258,23 +309,6 @@ FollowEvent _$FollowEventFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$FollowEventToJson(FollowEvent instance) =>
     <String, dynamic>{
       'replyToken': instance.replyToken,
-      'type': instance.type,
-      'mode': instance.mode,
-      'timestamp': instance.timestamp,
-      'source': instance.source,
-    };
-
-UnfollowEvent _$UnfollowEventFromJson(Map<String, dynamic> json) {
-  return UnfollowEvent(
-    type: json['type'] as String,
-    mode: json['mode'] as String,
-    timestamp: json['timestamp'] as int,
-    source: _SourceInstance(json['source'] as Map<String, dynamic>),
-  );
-}
-
-Map<String, dynamic> _$UnfollowEventToJson(UnfollowEvent instance) =>
-    <String, dynamic>{
       'type': instance.type,
       'mode': instance.mode,
       'timestamp': instance.timestamp,
@@ -314,6 +348,93 @@ Map<String, dynamic> _$LeaveEventToJson(LeaveEvent instance) =>
       'mode': instance.mode,
       'timestamp': instance.timestamp,
       'source': instance.source,
+    };
+
+Joined _$JoinedFromJson(Map<String, dynamic> json) {
+  return Joined(
+    members: _ListSourceInstance(json['members'] as List),
+  );
+}
+
+Map<String, dynamic> _$JoinedToJson(Joined instance) => <String, dynamic>{
+      'members': instance.members,
+    };
+
+MemberJoinedEvent _$MemberJoinedEventFromJson(Map<String, dynamic> json) {
+  return MemberJoinedEvent(
+    replyToken: json['replyToken'] as String,
+    type: json['type'] as String,
+    mode: json['mode'] as String,
+    timestamp: json['timestamp'] as int,
+    source: _SourceInstance(json['source'] as Map<String, dynamic>),
+    joined: json['joined'] == null
+        ? null
+        : Joined.fromJson(json['joined'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$MemberJoinedEventToJson(MemberJoinedEvent instance) =>
+    <String, dynamic>{
+      'replyToken': instance.replyToken,
+      'type': instance.type,
+      'mode': instance.mode,
+      'timestamp': instance.timestamp,
+      'source': instance.source,
+      'joined': instance.joined,
+    };
+
+Left _$LeftFromJson(Map<String, dynamic> json) {
+  return Left(
+    members: _ListSourceInstance(json['members'] as List),
+  );
+}
+
+Map<String, dynamic> _$LeftToJson(Left instance) => <String, dynamic>{
+      'members': instance.members,
+    };
+
+MemberLeftEvent _$MemberLeftEventFromJson(Map<String, dynamic> json) {
+  return MemberLeftEvent(
+    replyToken: json['replyToken'] as String,
+    type: json['type'] as String,
+    mode: json['mode'] as String,
+    timestamp: json['timestamp'] as int,
+    source: _SourceInstance(json['source'] as Map<String, dynamic>),
+    left: json['left'] == null
+        ? null
+        : Left.fromJson(json['left'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$MemberLeftEventToJson(MemberLeftEvent instance) =>
+    <String, dynamic>{
+      'replyToken': instance.replyToken,
+      'type': instance.type,
+      'mode': instance.mode,
+      'timestamp': instance.timestamp,
+      'source': instance.source,
+      'left': instance.left,
+    };
+
+MessageEvent _$MessageEventFromJson(Map<String, dynamic> json) {
+  return MessageEvent(
+    replyToken: json['replyToken'] as String,
+    type: json['type'] as String,
+    mode: json['mode'] as String,
+    timestamp: json['timestamp'] as int,
+    source: _SourceInstance(json['source'] as Map<String, dynamic>),
+    message: _MessageInstance(json['message'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$MessageEventToJson(MessageEvent instance) =>
+    <String, dynamic>{
+      'replyToken': instance.replyToken,
+      'type': instance.type,
+      'mode': instance.mode,
+      'timestamp': instance.timestamp,
+      'source': instance.source,
+      'message': instance.message,
     };
 
 Params _$ParamsFromJson(Map<String, dynamic> json) {
@@ -365,78 +486,6 @@ Map<String, dynamic> _$PostbackEventToJson(PostbackEvent instance) =>
       'timestamp': instance.timestamp,
       'source': instance.source,
       'postback': instance.postback,
-    };
-
-Beacon _$BeaconFromJson(Map<String, dynamic> json) {
-  return Beacon(
-    hwid: json['hwid'] as String,
-    type: json['type'] as String,
-    dm: json['dm'] as String,
-  );
-}
-
-Map<String, dynamic> _$BeaconToJson(Beacon instance) => <String, dynamic>{
-      'hwid': instance.hwid,
-      'type': instance.type,
-      'dm': instance.dm,
-    };
-
-BeaconEvent _$BeaconEventFromJson(Map<String, dynamic> json) {
-  return BeaconEvent(
-    replyToken: json['replyToken'] as String,
-    type: json['type'] as String,
-    mode: json['mode'] as String,
-    timestamp: json['timestamp'] as int,
-    source: _SourceInstance(json['source'] as Map<String, dynamic>),
-    beacon: json['beacon'] == null
-        ? null
-        : Beacon.fromJson(json['beacon'] as Map<String, dynamic>),
-  );
-}
-
-Map<String, dynamic> _$BeaconEventToJson(BeaconEvent instance) =>
-    <String, dynamic>{
-      'replyToken': instance.replyToken,
-      'type': instance.type,
-      'mode': instance.mode,
-      'timestamp': instance.timestamp,
-      'source': instance.source,
-      'beacon': instance.beacon,
-    };
-
-Link _$LinkFromJson(Map<String, dynamic> json) {
-  return Link(
-    result: json['result'] as String,
-    nonce: json['nonce'] as String,
-  );
-}
-
-Map<String, dynamic> _$LinkToJson(Link instance) => <String, dynamic>{
-      'result': instance.result,
-      'nonce': instance.nonce,
-    };
-
-AccountLinkEvent _$AccountLinkEventFromJson(Map<String, dynamic> json) {
-  return AccountLinkEvent(
-    replyToken: json['replyToken'] as String,
-    type: json['type'] as String,
-    mode: json['mode'] as String,
-    timestamp: json['timestamp'] as int,
-    source: _SourceInstance(json['source'] as Map<String, dynamic>),
-    link: json['link'] == null
-        ? null
-        : Link.fromJson(json['link'] as Map<String, dynamic>),
-  );
-}
-
-Map<String, dynamic> _$AccountLinkEventToJson(AccountLinkEvent instance) =>
-    <String, dynamic>{
-      'replyToken': instance.replyToken,
-      'type': instance.type,
-      'mode': instance.mode,
-      'timestamp': instance.timestamp,
-      'source': instance.source,
-      'link': instance.link,
     };
 
 ActionResult _$ActionResultFromJson(Map<String, dynamic> json) {
@@ -543,70 +592,21 @@ Map<String, dynamic> _$ThingsEventToJson(ThingsEvent instance) =>
       'things': instance.things,
     };
 
-Joined _$JoinedFromJson(Map<String, dynamic> json) {
-  return Joined(
-    members: _ListSourceInstance(json['members'] as List),
-  );
-}
-
-Map<String, dynamic> _$JoinedToJson(Joined instance) => <String, dynamic>{
-      'members': instance.members,
-    };
-
-MemberJoinedEvent _$MemberJoinedEventFromJson(Map<String, dynamic> json) {
-  return MemberJoinedEvent(
-    replyToken: json['replyToken'] as String,
+UnfollowEvent _$UnfollowEventFromJson(Map<String, dynamic> json) {
+  return UnfollowEvent(
     type: json['type'] as String,
     mode: json['mode'] as String,
     timestamp: json['timestamp'] as int,
     source: _SourceInstance(json['source'] as Map<String, dynamic>),
-    joined: json['joined'] == null
-        ? null
-        : Joined.fromJson(json['joined'] as Map<String, dynamic>),
   );
 }
 
-Map<String, dynamic> _$MemberJoinedEventToJson(MemberJoinedEvent instance) =>
+Map<String, dynamic> _$UnfollowEventToJson(UnfollowEvent instance) =>
     <String, dynamic>{
-      'replyToken': instance.replyToken,
       'type': instance.type,
       'mode': instance.mode,
       'timestamp': instance.timestamp,
       'source': instance.source,
-      'joined': instance.joined,
-    };
-
-Left _$LeftFromJson(Map<String, dynamic> json) {
-  return Left(
-    members: _ListSourceInstance(json['members'] as List),
-  );
-}
-
-Map<String, dynamic> _$LeftToJson(Left instance) => <String, dynamic>{
-      'members': instance.members,
-    };
-
-MemberLeftEvent _$MemberLeftEventFromJson(Map<String, dynamic> json) {
-  return MemberLeftEvent(
-    replyToken: json['replyToken'] as String,
-    type: json['type'] as String,
-    mode: json['mode'] as String,
-    timestamp: json['timestamp'] as int,
-    source: _SourceInstance(json['source'] as Map<String, dynamic>),
-    left: json['left'] == null
-        ? null
-        : Left.fromJson(json['left'] as Map<String, dynamic>),
-  );
-}
-
-Map<String, dynamic> _$MemberLeftEventToJson(MemberLeftEvent instance) =>
-    <String, dynamic>{
-      'replyToken': instance.replyToken,
-      'type': instance.type,
-      'mode': instance.mode,
-      'timestamp': instance.timestamp,
-      'source': instance.source,
-      'left': instance.left,
     };
 
 Unsend _$UnsendFromJson(Map<String, dynamic> json) {
