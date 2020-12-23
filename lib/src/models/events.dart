@@ -1,0 +1,20 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'events/account_link_event.dart';
+part 'events/beacon_event.dart';
+part 'events/events_message.dart';
+part 'events/events_source.dart';
+part 'events/events_utils.dart';
+part 'events/follow_event.dart';
+part 'events/join_event.dart';
+part 'events/leave_event.dart';
+part 'events/member_joined_event.dart';
+part 'events/member_left_event.dart';
+part 'events/message_event.dart';
+part 'events/postback_event.dart';
+part 'events/things_event.dart';
+part 'events/unfollow_event.dart';
+part 'events/unsend_event.dart';
+part 'events/video_play_complete_event.dart';
+part 'events/webhook_event.dart';
+part 'events.g.dart';

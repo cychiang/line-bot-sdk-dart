@@ -1,4 +1,4 @@
-part of 'webhook_event.dart';
+part of '../events.dart';
 
 List<dynamic> _EventInstance(List events) {
   var _events = <dynamic>[];

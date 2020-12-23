@@ -1,4 +1,4 @@
-part of 'webhook_event.dart';
+part of '../events.dart';
 
 @JsonSerializable()
 class Joined {
@@ -28,7 +28,12 @@ class MemberJoinedEvent {
   Joined joined;
 
   MemberJoinedEvent(
-      {this.replyToken, this.type, this.mode, this.timestamp, this.source, this.joined});
+      {this.replyToken,
+      this.type,
+      this.mode,
+      this.timestamp,
+      this.source,
+      this.joined});
   factory MemberJoinedEvent.fromJson(Map<String, dynamic> json) =>
       _$MemberJoinedEventFromJson(json);
 

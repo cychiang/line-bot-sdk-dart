@@ -1,4 +1,4 @@
-part of 'webhook_event.dart';
+part of '../events.dart';
 
 @JsonSerializable()
 class Params {
@@ -48,11 +48,11 @@ class PostbackEvent {
 
   PostbackEvent(
       {this.replyToken,
-        this.type,
-        this.mode,
-        this.timestamp,
-        this.source,
-        this.postback});
+      this.type,
+      this.mode,
+      this.timestamp,
+      this.source,
+      this.postback});
   factory PostbackEvent.fromJson(Map<String, dynamic> json) =>
       _$PostbackEventFromJson(json);
 

@@ -1,23 +1,10 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'webhook_event.dart';
+part of 'events.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
-
-WebhookEvent _$WebhookEventFromJson(Map<String, dynamic> json) {
-  return WebhookEvent(
-    json['destination'] as String,
-    _EventInstance(json['events'] as List),
-  );
-}
-
-Map<String, dynamic> _$WebhookEventToJson(WebhookEvent instance) =>
-    <String, dynamic>{
-      'destination': instance.destination,
-      'events': instance.events,
-    };
 
 Emojis _$EmojisFromJson(Map<String, dynamic> json) {
   return Emojis(
@@ -688,4 +675,17 @@ Map<String, dynamic> _$VideoPlayCompleteEventToJson(
       'timestamp': instance.timestamp,
       'source': instance.source,
       'videoPlayComplete': instance.videoPlayComplete,
+    };
+
+WebhookEvent _$WebhookEventFromJson(Map<String, dynamic> json) {
+  return WebhookEvent(
+    json['destination'] as String,
+    _EventInstance(json['events'] as List),
+  );
+}
+
+Map<String, dynamic> _$WebhookEventToJson(WebhookEvent instance) =>
+    <String, dynamic>{
+      'destination': instance.destination,
+      'events': instance.events,
     };

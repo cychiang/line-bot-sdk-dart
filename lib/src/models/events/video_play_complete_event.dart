@@ -1,4 +1,4 @@
-part of 'webhook_event.dart';
+part of '../events.dart';
 
 @JsonSerializable()
 class VideoPlayComplete {
@@ -28,7 +28,13 @@ class VideoPlayCompleteEvent {
   @JsonKey(name: 'videoPlayComplete')
   VideoPlayComplete videoPlayComplete;
 
-  VideoPlayCompleteEvent({this.replyToken, this.type, this.mode, this.timestamp, this.source, this.videoPlayComplete});
+  VideoPlayCompleteEvent(
+      {this.replyToken,
+      this.type,
+      this.mode,
+      this.timestamp,
+      this.source,
+      this.videoPlayComplete});
   factory VideoPlayCompleteEvent.fromJson(Map<String, dynamic> json) =>
       _$VideoPlayCompleteEventFromJson(json);
 

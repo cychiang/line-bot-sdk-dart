@@ -1,4 +1,4 @@
-part of 'webhook_event.dart';
+part of '../events.dart';
 
 @JsonSerializable()
 class Beacon {
@@ -33,11 +33,11 @@ class BeaconEvent {
 
   BeaconEvent(
       {this.replyToken,
-        this.type,
-        this.mode,
-        this.timestamp,
-        this.source,
-        this.beacon});
+      this.type,
+      this.mode,
+      this.timestamp,
+      this.source,
+      this.beacon});
   factory BeaconEvent.fromJson(Map<String, dynamic> json) =>
       _$BeaconEventFromJson(json);
 

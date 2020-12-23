@@ -1,4 +1,4 @@
-part of 'webhook_event.dart';
+part of '../events.dart';
 
 @JsonSerializable()
 class MessageEvent {
@@ -17,11 +17,11 @@ class MessageEvent {
 
   MessageEvent(
       {this.replyToken,
-        this.type,
-        this.mode,
-        this.timestamp,
-        this.source,
-        this.message});
+      this.type,
+      this.mode,
+      this.timestamp,
+      this.source,
+      this.message});
   factory MessageEvent.fromJson(Map<String, dynamic> json) =>
       _$MessageEventFromJson(json);
 

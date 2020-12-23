@@ -1,4 +1,4 @@
-part of 'webhook_event.dart';
+part of '../events.dart';
 
 @JsonSerializable()
 class Link {
@@ -31,11 +31,11 @@ class AccountLinkEvent {
 
   AccountLinkEvent(
       {this.replyToken,
-        this.type,
-        this.mode,
-        this.timestamp,
-        this.source,
-        this.link});
+      this.type,
+      this.mode,
+      this.timestamp,
+      this.source,
+      this.link});
   factory AccountLinkEvent.fromJson(Map<String, dynamic> json) =>
       _$AccountLinkEventFromJson(json);
 
