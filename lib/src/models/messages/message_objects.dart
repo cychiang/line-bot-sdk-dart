@@ -19,6 +19,8 @@ class Emojis {
 
 @JsonSerializable()
 class TextMessage {
+  @JsonKey(name: 'id')
+  String id;
   @JsonKey(name: 'type')
   String type;
   @JsonKey(name: 'text')
@@ -26,7 +28,7 @@ class TextMessage {
   @JsonKey(name: 'emojis', includeIfNull: false)
   List<Emojis> emojis;
 
-  TextMessage({this.type, this.text, this.emojis});
+  TextMessage({this.id, this.type, this.text, this.emojis});
   factory TextMessage.fromJson(Map<String, dynamic> json) =>
       _$TextMessageFromJson(json);
 

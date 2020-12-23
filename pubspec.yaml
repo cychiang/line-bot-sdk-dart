@@ -1,7 +1,7 @@
 name: line_bot_sdk_dart
-description: A starting point for Dart libraries or applications.
-# version: 1.0.0
-# homepage: https://www.example.com
+description: SDK of the LINE Messaging API for Dart.
+version: 0.0.1
+homepage: https://github.com/cychiang/line-bot-sdk-dart
 
 environment:
   sdk: '>=2.10.0 <3.0.0'
