@@ -407,7 +407,8 @@ void main() {
       expect(webhookEventObjects.events[20].source.groupId, 'C4af4980629...');
 
       expect(webhookEventObjects.events[20].joined.members.length, 2);
-      expect(webhookEventObjects.events[20].joined.members[0], isA<SourceUser>());
+      expect(
+          webhookEventObjects.events[20].joined.members[0], isA<SourceUser>());
       expect(webhookEventObjects.events[20].joined.members[0].userId,
           'U4af4980629...');
       expect(webhookEventObjects.events[20].joined.members[1].userId,
@@ -527,7 +528,8 @@ void main() {
       expect(webhookEventObjects.events[26].source.userId,
           'U206d25c2ea6bd87c17655609a1c37cb8');
 
-      expect(webhookEventObjects.events[26].videoPlayComplete, isA<VideoPlayComplete>());
+      expect(webhookEventObjects.events[26].videoPlayComplete,
+          isA<VideoPlayComplete>());
       expect(webhookEventObjects.events[26].videoPlayComplete.trackingId,
           'track_id');
     });
