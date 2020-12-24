@@ -1,1 +1,1 @@
-linebot/CHANGELOG.md
+line_bot/CHANGELOG.md

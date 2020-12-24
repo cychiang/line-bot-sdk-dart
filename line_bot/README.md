@@ -1,11 +1,11 @@
-SDK of the LINE Messaging API for Dart. 
+Library of the LINE Messaging API for Dart 
 
 **IMPORTANT: This is not an official SDK by LINE**
 
 ## Introduction
 
 We make it easy to developers to code their bots with Dart! A few steps to create a parser and bot to handle requests and reply messages. 
-The SDK is based on the official [LINE Messaging API Document][line_messaging_api] and inspired by the official SDK: [line-bot-sdk-python][line_bot_sdk_python] 
+The library is based on the official [LINE Messaging API Document][line_messaging_api] and inspired by the official SDK: [line-bot-sdk-python][line_bot_sdk_python] 
 
 [line_messaging_api]: https://developers.line.biz/en/reference/messaging-api
 [line_bot_sdk_python]: https://github.com/line/line-bot-sdk-python
@@ -24,7 +24,7 @@ The SDK is based on the official [LINE Messaging API Document][line_messaging_ap
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:line_bot_sdk_dart/linebot.dart';
+import 'package:line_bot_sdk_dart/line_bot.dart';
 
 Future main() async {
   var envVars = Platform.environment;

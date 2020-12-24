@@ -1,7 +1,4 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
-library linebot;
+library line_bot;
 
 export 'src/api/message.dart';
 export 'src/api/webhook.dart';

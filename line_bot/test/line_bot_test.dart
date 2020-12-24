@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:linebot/linebot.dart';
+import 'package:line_bot/line_bot.dart';
 import 'package:test/test.dart';
 
 void main() {
