@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:line_bot_sdk_dart/line_bot_sdk_dart.dart';
+import 'package:linebot/linebot.dart';
 
 Future main() async {
   var envVars = Platform.environment;
