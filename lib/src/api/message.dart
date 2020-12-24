@@ -6,11 +6,6 @@ class LineBotApi {
   static const defaultApiEndpoint = 'https://api.line.me';
   static const defaultApiDataEndpoint = 'https://api-data.line.me';
   static const defaultTimeout = 30;
-  static const apiVersion = '/v2';
-  static const sendReplyMessage =
-      defaultApiDataEndpoint + apiVersion + '/bot/message/reply'; // POST
-  static const sendPushMessage =
-      defaultApiDataEndpoint + apiVersion + '/bot/message/push'; // POST
   String channelAccessToken;
   String endpoint;
   String dataEndpoint;
@@ -29,16 +24,15 @@ class LineBotApi {
       'Content-Type': 'application/json',
     };
   }
-  Future<http.Response> replyMessage(dynamic message) async {
-    return await _post(sendReplyMessage, headers, message);
+  Future<http.Response> replyMessage(dynamic body) async {
+    return await _post(endpoint + '/v2/bot/message/reply', headers, body);
   }
 
-  Future<http.Response> pushMessage(dynamic message) async {
-    return await _post(sendReplyMessage, headers, message);
+  Future<http.Response> pushMessage(dynamic body) async {
+    return await _post(endpoint + '/v2/bot/message/push', headers, body);
   }
-
   Future<http.Response> _post(
-      String url, Map<String, String> headers, String body) async {
+      String url, Map<String, String> headers, dynamic body) async {
     var response =
         await http.post(url, headers: headers, body: jsonEncode(body));
     return response;
