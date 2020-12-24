@@ -7,13 +7,12 @@ Future main() async {
   var envVars = Platform.environment;
   var lineChannelSecret = envVars['LINE_CHANNEL_SECRET'];
   var lineChannelAccessToken = envVars['LINE_CHANNEL_ACCESS_TOKEN'];
+  var lineBotApi = LineBotApi(lineChannelAccessToken);
+  var webhookParser = WebhookParser(lineChannelSecret);
   var server = await HttpServer.bind(
     InternetAddress.loopbackIPv4,
     8080,
   );
-
-  var webhookParser = WebhookParser(lineChannelSecret);
-  var lineBotApi = LineBotApi(lineChannelAccessToken);
   await for (var request in server) {
     if (request.method == 'POST' && request.uri.path == '/callback') {
       handleRequest(request, webhookParser, lineBotApi);
@@ -25,9 +24,10 @@ Future main() async {
 
 void handleRequest(HttpRequest request, WebhookParser webhookParser,
     LineBotApi lineBotApi) async {
+  var message;
+  var replyMessage;
   var response = request.response;
   var content = await utf8.decoder.bind(request).join();
-  var message;
   try {
     message = webhookParser.parser(
         content.toString(), request.headers['x-line-signature'][0]);
@@ -39,25 +39,17 @@ void handleRequest(HttpRequest request, WebhookParser webhookParser,
     return;
   }
   if (message.events.isNotEmpty) {
-    message.events.forEach((event) async {
-      if (event is MessageEvent) {
-        var replyMessage;
-        switch (event.message.runtimeType) {
-          case TextMessage:
-            replyMessage = ReplyMessage(
-                replyToken: event.replyToken,
-                messages: [Message(type: 'text', text: event.message.text)]);
-        }
-        await lineBotApi.replyMessage(replyMessage);
-      }
-    });
-    response
-      ..statusCode = HttpStatus.ok
-      ..write('Request Accepted.');
-  } else {
-    print('empty request');
+    replyMessage = ReplyMessage(
+        replyToken: message.events[0].replyToken,
+        messages: [
+          Message(type: 'text', text: message.events[0].message.text)
+        ]);
+    await lineBotApi.replyMessage(replyMessage);
   }
-  await response.close();
+  response
+    ..statusCode = HttpStatus.ok
+    ..write('Request Accepted.')
+    ..close();
 }
 
 void handleUnSupportedRequest(HttpRequest request) {
