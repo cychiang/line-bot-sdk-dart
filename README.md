@@ -8,6 +8,16 @@ The SDK is based on the official [LINE Messaging API Document][line_messaging_ap
 [line_messaging_api]: https://developers.line.biz/en/reference/messaging-api
 [line_bot_sdk_python]: https://github.com/line/line-bot-sdk-python
 
+## Implemented methods, events and messages
+
+- [x] Support parser and test cases for [webhook event objects][webhook_event_objects]
+- [x] Validation with signature from `x-line-signature`
+- [x] Reply message with TextMessage
+
+[webhook_event_objects]: https://developers.line.biz/en/reference/messaging-api/#webhook-event-objects
+
+## Example
+
 ```dart
 import 'dart:convert';
 import 'dart:io';
@@ -74,6 +84,6 @@ void handleUnSupportedRequest(HttpRequest request) {
 
 ## Features and bugs
 
-Please file feature requests and bugs at the [issue tracker][tracker].
+Please file feature requests and bugs at the [issue tracker][issue_tracker].
 
-[tracker]: https://github.com/cychiang/line-bot-sdk-dart/issues
+[issue_tracker]: https://github.com/cychiang/line-bot-sdk-dart/issues
