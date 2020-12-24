@@ -39,7 +39,6 @@ void handleRequest(HttpRequest request, WebhookParser webhookParser,
     return;
   }
   if (message.events.isNotEmpty) {
-    print('process');
     message.events.forEach((event) async {
       if (event is MessageEvent) {
         var replyMessage;
@@ -56,7 +55,7 @@ void handleRequest(HttpRequest request, WebhookParser webhookParser,
       ..statusCode = HttpStatus.ok
       ..write('Request Accepted.');
   } else {
-    print('empty events');
+    print('empty request');
   }
   await response.close();
 }
