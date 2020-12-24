@@ -1,4 +1,6 @@
-SDK of the LINE Messaging API for Dart. Note: This is not an official SDK supported by LINE
+SDK of the LINE Messaging API for Dart. 
+
+**IMPORTANT: This is not an official SDK by LINE**
 
 ## Introduction
 
