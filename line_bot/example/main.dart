@@ -25,7 +25,6 @@ Future main() async {
 void handleRequest(HttpRequest request, WebhookParser webhookParser,
     LineBotApi lineBotApi) async {
   var message;
-  var replyMessage;
   var response = request.response;
   var content = await utf8.decoder.bind(request).join();
   try {

@@ -24,14 +24,14 @@ The library is based on the official [LINE Messaging API Document][line_messagin
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:line_bot_sdk_dart/line_bot.dart';
+import 'package:line_bot/line_bot.dart';
 
 Future main() async {
   var envVars = Platform.environment;
   var lineChannelSecret = envVars['LINE_CHANNEL_SECRET'];
   var lineChannelAccessToken = envVars['LINE_CHANNEL_ACCESS_TOKEN'];
-  var webhookParser = WebhookParser(lineChannelSecret);
   var lineBotApi = LineBotApi(lineChannelAccessToken);
+  var webhookParser = WebhookParser(lineChannelSecret);
   var server = await HttpServer.bind(
     InternetAddress.loopbackIPv4,
     8080,
@@ -48,7 +48,6 @@ Future main() async {
 void handleRequest(HttpRequest request, WebhookParser webhookParser,
     LineBotApi lineBotApi) async {
   var message;
-  var replyMessage;
   var response = request.response;
   var content = await utf8.decoder.bind(request).join();
   try {
@@ -62,12 +61,10 @@ void handleRequest(HttpRequest request, WebhookParser webhookParser,
     return;
   }
   if (message.events.isNotEmpty) {
-    replyMessage = ReplyMessage(
-        replyToken: message.events[0].replyToken,
-        messages: [
-          Message(type: 'text', text: message.events[0].message.text)
-        ]);
-    await lineBotApi.replyMessage(replyMessage);
+    var messages = [
+      Message(type: 'text', text: message.events[0].message.text)
+    ];
+    await lineBotApi.replyMessage(message.events[0].replyToken, messages);
   }
   response
     ..statusCode = HttpStatus.ok

@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:html';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
+import 'package:line_bot/line_bot.dart';
 
 import '../models/messages.dart';
 import '../models/profile.dart';
@@ -19,14 +19,14 @@ class LineBotApi {
   int timeout;
 
   LineBotApi(String channelAccessToken,
-      [String endpoint, String dataEndpoint, int timeout])
+      {String endpoint, String dataEndpoint, int timeout})
       : channelAccessToken = channelAccessToken,
         endpoint = endpoint ?? defaultApiEndpoint,
         dataEndpoint = dataEndpoint ?? defaultApiDataEndpoint,
         timeout = timeout ?? defaultTimeout {
     headers = {
       'Authorization': 'Bearer ' + channelAccessToken.toString(),
-      'User-Agent': 'test',
+      'User-Agent': 'line-bot-sdk-dart/${version}',
       'Content-Type': 'application/json',
     };
   }
@@ -43,7 +43,7 @@ class LineBotApi {
 
   Future<Profile> getProfile(String userId) async {
     Profile profile;
-    var response = await _get(endpoint + '/v2/bot/profile' + userId.toString());
+    var response = await _get(endpoint + '/v2/bot/profile/${userId}');
     if (response.statusCode == HttpStatus.ok) {
       profile = Profile.fromJson(jsonDecode(response.body));
     }
@@ -56,11 +56,18 @@ class LineBotApi {
     if (response.statusCode == HttpStatus.ok) {
       followers = Followers.fromJson(jsonDecode(response.body));
       while (followers.next.isNotEmpty) {
+        Followers _followers;
         response = await _get(
             endpoint + '/v2/bot/followers/ids?start=${followers.next}');
         if (response.statusCode == HttpStatus.ok) {
-          var _followers = Followers.fromJson(jsonDecode(response.body));
-          followers.userIds.addAll(_followers.userIds);
+          _followers = Followers.fromJson(jsonDecode(response.body));
+        } else {
+          break;
+        }
+        followers.userIds.addAll(_followers.userIds);
+        if (_followers.next.isEmpty) {
+          break;
+        } else {
           followers.next = _followers.next;
         }
       }
