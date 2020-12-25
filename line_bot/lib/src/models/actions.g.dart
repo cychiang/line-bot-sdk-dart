@@ -7,8 +7,9 @@ part of 'actions.dart';
 // **************************************************************************
 
 CameraAction _$CameraActionFromJson(Map<String, dynamic> json) {
+  $checkKeys(json, requiredKeys: const ['label']);
   return CameraAction(
-    type: json['type'] as String,
+    type: json['type'] as String ?? 'camera',
     label: json['label'] as String,
   );
 }
@@ -20,8 +21,9 @@ Map<String, dynamic> _$CameraActionToJson(CameraAction instance) =>
     };
 
 CameraRollAction _$CameraRollActionFromJson(Map<String, dynamic> json) {
+  $checkKeys(json, requiredKeys: const ['label']);
   return CameraRollAction(
-    type: json['type'] as String,
+    type: json['type'] as String ?? 'cameraRoll',
     label: json['label'] as String,
   );
 }
@@ -33,8 +35,9 @@ Map<String, dynamic> _$CameraRollActionToJson(CameraRollAction instance) =>
     };
 
 DatetimePickerAction _$DatetimePickerActionFromJson(Map<String, dynamic> json) {
+  $checkKeys(json, requiredKeys: const ['data', 'mode']);
   return DatetimePickerAction(
-    type: json['type'] as String,
+    type: json['type'] as String ?? 'datetimepicker',
     label: json['label'] as String,
     data: json['data'] as String,
     mode: json['mode'] as String,
@@ -57,8 +60,9 @@ Map<String, dynamic> _$DatetimePickerActionToJson(
     };
 
 LocationAction _$LocationActionFromJson(Map<String, dynamic> json) {
+  $checkKeys(json, requiredKeys: const ['label']);
   return LocationAction(
-    type: json['type'] as String,
+    type: json['type'] as String ?? 'location',
     label: json['label'] as String,
   );
 }
@@ -70,7 +74,7 @@ Map<String, dynamic> _$LocationActionToJson(LocationAction instance) =>
     };
 
 MessageAction _$MessageActionFromJson(Map<String, dynamic> json) {
-  $checkKeys(json, requiredKeys: const ['type', 'text']);
+  $checkKeys(json, requiredKeys: const ['text']);
   return MessageAction(
     type: json['type'] as String ?? 'message',
     label: json['label'] as String,
@@ -86,7 +90,7 @@ Map<String, dynamic> _$MessageActionToJson(MessageAction instance) =>
     };
 
 PostbackAction _$PostbackActionFromJson(Map<String, dynamic> json) {
-  $checkKeys(json, requiredKeys: const ['type', 'data']);
+  $checkKeys(json, requiredKeys: const ['data']);
   return PostbackAction(
     type: json['type'] as String ?? 'postback',
     label: json['label'] as String,
@@ -114,7 +118,7 @@ Map<String, dynamic> _$AltUriToJson(AltUri instance) => <String, dynamic>{
     };
 
 UriAction _$UriActionFromJson(Map<String, dynamic> json) {
-  $checkKeys(json, requiredKeys: const ['type', 'uri']);
+  $checkKeys(json, requiredKeys: const ['uri']);
   return UriAction(
     type: json['type'] as String ?? 'uri',
     label: json['label'] as String,

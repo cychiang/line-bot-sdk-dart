@@ -42,12 +42,7 @@ void handleRequest(HttpRequest request, WebhookParser webhookParser,
     var messages = [
       Message(type: 'text', text: message.events[0].message.text)
     ];
-    // replyMessage = ReplyMessage(
-    //     replyToken: message.events[0].replyToken,
-    //     messages: [
-    //
-    //     ]);
-    await lineBotApi.replyMessage(message.events[0].replyToken, replyMessage);
+    await lineBotApi.replyMessage(message.events[0].replyToken, messages);
   }
   response
     ..statusCode = HttpStatus.ok
