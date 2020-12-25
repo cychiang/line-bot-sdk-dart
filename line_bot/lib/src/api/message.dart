@@ -52,7 +52,7 @@ class LineBotApi {
 
   Future<Followers> getFollowers({String next}) async {
     Followers followers;
-    var response = await _get((next ?? false)
+    var response = await _get((next != null)
         ? endpoint + '/v2/bot/followers/ids?start=${next}'
         : endpoint + '/v2/bot/followers/ids');
     if (response.statusCode == HttpStatus.ok) {
