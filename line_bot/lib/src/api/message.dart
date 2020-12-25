@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import '../models/messages.dart';
+
 class LineBotApi {
   static const defaultApiEndpoint = 'https://api.line.me';
   static const defaultApiDataEndpoint = 'https://api-data.line.me';
@@ -24,8 +26,12 @@ class LineBotApi {
       'Content-Type': 'application/json',
     };
   }
-  Future<http.Response> replyMessage(dynamic body) async {
-    return await _post(endpoint + '/v2/bot/message/reply', headers, body);
+  Future<http.Response> replyMessage(
+      String replyToken, List<Message> messages) async {
+    var replyMessage = ReplyMessage(replyToken: replyToken, messages: messages);
+
+    return await _post(
+        endpoint + '/v2/bot/message/reply', headers, replyMessage);
   }
 
   Future<http.Response> pushMessage(dynamic body) async {

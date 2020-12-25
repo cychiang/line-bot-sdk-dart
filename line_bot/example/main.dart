@@ -39,12 +39,15 @@ void handleRequest(HttpRequest request, WebhookParser webhookParser,
     return;
   }
   if (message.events.isNotEmpty) {
-    replyMessage = ReplyMessage(
-        replyToken: message.events[0].replyToken,
-        messages: [
-          Message(type: 'text', text: message.events[0].message.text)
-        ]);
-    await lineBotApi.replyMessage(replyMessage);
+    var messages = [
+      Message(type: 'text', text: message.events[0].message.text)
+    ];
+    // replyMessage = ReplyMessage(
+    //     replyToken: message.events[0].replyToken,
+    //     messages: [
+    //
+    //     ]);
+    await lineBotApi.replyMessage(message.events[0].replyToken, replyMessage);
   }
   response
     ..statusCode = HttpStatus.ok
