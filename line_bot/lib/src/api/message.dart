@@ -50,27 +50,13 @@ class LineBotApi {
     return profile;
   }
 
-  Future<Followers> getFollowers() async {
+  Future<Followers> getFollowers({String next}) async {
     Followers followers;
-    var response = await _get(endpoint + '/v2/bot/followers/ids');
+    var response = await _get((next ?? false)
+        ? endpoint + '/v2/bot/followers/ids?start=${next}'
+        : endpoint + '/v2/bot/followers/ids');
     if (response.statusCode == HttpStatus.ok) {
       followers = Followers.fromJson(jsonDecode(response.body));
-      while (followers.next.isNotEmpty) {
-        Followers _followers;
-        response = await _get(
-            endpoint + '/v2/bot/followers/ids?start=${followers.next}');
-        if (response.statusCode == HttpStatus.ok) {
-          _followers = Followers.fromJson(jsonDecode(response.body));
-        } else {
-          break;
-        }
-        followers.userIds.addAll(_followers.userIds);
-        if (_followers.next.isEmpty) {
-          break;
-        } else {
-          followers.next = _followers.next;
-        }
-      }
     }
     return followers;
   }

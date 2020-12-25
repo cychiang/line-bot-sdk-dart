@@ -16,8 +16,8 @@ void main() {
     });
     test('MessageEvent, SourceUser, TextMessage...', () {
       expect(webhookEvent.events[0], isA<MessageEvent>());
-      expect(webhookEvent.events[0].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[0].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[0].type, 'message');
       expect(webhookEvent.events[0].mode, 'active');
       expect(webhookEvent.events[0].timestamp, 1462629479859);
@@ -33,8 +33,8 @@ void main() {
     });
     test('MessageEvent, SourceRoom, TextMessage', () {
       expect(webhookEvent.events[1], isA<MessageEvent>());
-      expect(webhookEvent.events[1].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[1].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[1].type, 'message');
       expect(webhookEvent.events[1].mode, 'active');
       expect(webhookEvent.events[1].timestamp, 1462629479859);
@@ -48,20 +48,16 @@ void main() {
       expect(webhookEvent.events[1].message, isA<ImageMessage>());
       expect(webhookEvent.events[1].message.id, '325708');
       expect(webhookEvent.events[1].message.type, 'image');
-      expect(webhookEvent.events[1].message.contentProvider.type,
-          'external');
-      expect(
-          webhookEvent
-              .events[1].message.contentProvider.originalContentUrl,
+      expect(webhookEvent.events[1].message.contentProvider.type, 'external');
+      expect(webhookEvent.events[1].message.contentProvider.originalContentUrl,
           'https://example.com');
-      expect(
-          webhookEvent.events[1].message.contentProvider.previewImageUrl,
+      expect(webhookEvent.events[1].message.contentProvider.previewImageUrl,
           'https://example.com');
     });
     test('MessageEvent, SourceUser, VideoMessage', () {
       expect(webhookEvent.events[2], isA<MessageEvent>());
-      expect(webhookEvent.events[2].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[2].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[2].type, 'message');
       expect(webhookEvent.events[2].mode, 'active');
       expect(webhookEvent.events[2].timestamp, 1462629479859);
@@ -75,20 +71,16 @@ void main() {
       expect(webhookEvent.events[2].message.id, '325708');
       expect(webhookEvent.events[2].message.type, 'video');
       expect(webhookEvent.events[2].message.duration, 60000);
-      expect(webhookEvent.events[2].message.contentProvider.type,
-          'external');
-      expect(
-          webhookEvent
-              .events[2].message.contentProvider.originalContentUrl,
+      expect(webhookEvent.events[2].message.contentProvider.type, 'external');
+      expect(webhookEvent.events[2].message.contentProvider.originalContentUrl,
           'https://example.com');
-      expect(
-          webhookEvent.events[2].message.contentProvider.previewImageUrl,
+      expect(webhookEvent.events[2].message.contentProvider.previewImageUrl,
           'https://example.com');
     });
     test('MessageEvent, SourceUser, AudioMessage', () {
       expect(webhookEvent.events[3], isA<MessageEvent>());
-      expect(webhookEvent.events[3].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[3].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[3].type, 'message');
       expect(webhookEvent.events[3].mode, 'active');
       expect(webhookEvent.events[3].timestamp, 1462629479859);
@@ -102,17 +94,14 @@ void main() {
       expect(webhookEvent.events[3].message.id, '325708');
       expect(webhookEvent.events[3].message.type, 'audio');
       expect(webhookEvent.events[3].message.duration, 60000);
-      expect(webhookEvent.events[3].message.contentProvider.type,
-          'external');
-      expect(
-          webhookEvent
-              .events[3].message.contentProvider.originalContentUrl,
+      expect(webhookEvent.events[3].message.contentProvider.type, 'external');
+      expect(webhookEvent.events[3].message.contentProvider.originalContentUrl,
           'https://example.com');
     });
     test('MessageEvent, SourceUser, LocationMessage', () {
       expect(webhookEvent.events[4], isA<MessageEvent>());
-      expect(webhookEvent.events[4].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[4].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[4].type, 'message');
       expect(webhookEvent.events[4].mode, 'active');
       expect(webhookEvent.events[4].timestamp, 1462629479859);
@@ -128,13 +117,12 @@ void main() {
       expect(webhookEvent.events[4].message.title, 'my location');
       expect(webhookEvent.events[4].message.address, 'Tokyo');
       expect(webhookEvent.events[4].message.latitude, 35.65910807942215);
-      expect(
-          webhookEvent.events[4].message.longitude, 139.70372892916203);
+      expect(webhookEvent.events[4].message.longitude, 139.70372892916203);
     });
     test('MessageEvent, SourceUser, StickerMessage', () {
       expect(webhookEvent.events[5], isA<MessageEvent>());
-      expect(webhookEvent.events[5].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[5].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[5].type, 'message');
       expect(webhookEvent.events[5].mode, 'active');
       expect(webhookEvent.events[5].timestamp, 1462629479859);
@@ -149,15 +137,14 @@ void main() {
       expect(webhookEvent.events[5].message.type, 'sticker');
       expect(webhookEvent.events[5].message.packageId, '1');
       expect(webhookEvent.events[5].message.stickerId, '1');
-      expect(
-          webhookEvent.events[5].message.stickerResourceType, 'STATIC');
+      expect(webhookEvent.events[5].message.stickerResourceType, 'STATIC');
       expect(webhookEvent.events[5].message.keywords[0], 'Love You');
       expect(webhookEvent.events[5].message.keywords[1], 'Love');
     });
     test('FollowEvent, SourceUser', () {
       expect(webhookEvent.events[6], isA<FollowEvent>());
-      expect(webhookEvent.events[6].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[6].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[6].type, 'follow');
       expect(webhookEvent.events[6].mode, 'active');
       expect(webhookEvent.events[6].timestamp, 1462629479859);
@@ -180,8 +167,8 @@ void main() {
     });
     test('JoinEvent, SourceGroup', () {
       expect(webhookEvent.events[8], isA<JoinEvent>());
-      expect(webhookEvent.events[8].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[8].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[8].type, 'join');
       expect(webhookEvent.events[8].mode, 'active');
       expect(webhookEvent.events[8].timestamp, 1462629479859);
@@ -206,8 +193,8 @@ void main() {
     });
     test('PostbackEvent, SourceUser', () {
       expect(webhookEvent.events[10], isA<PostbackEvent>());
-      expect(webhookEvent.events[10].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[10].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[10].type, 'postback');
       expect(webhookEvent.events[10].mode, 'active');
       expect(webhookEvent.events[10].timestamp, 1462629479859);
@@ -222,8 +209,8 @@ void main() {
     });
     test('BeaconEvent, SourceUser', () {
       expect(webhookEvent.events[11], isA<BeaconEvent>());
-      expect(webhookEvent.events[11].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[11].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[11].type, 'beacon');
       expect(webhookEvent.events[11].mode, 'active');
       expect(webhookEvent.events[11].timestamp, 1462629479859);
@@ -239,8 +226,8 @@ void main() {
     });
     test('BeaconEvent, SourceUser (with device message)', () {
       expect(webhookEvent.events[12], isA<BeaconEvent>());
-      expect(webhookEvent.events[12].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[12].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[12].type, 'beacon');
       expect(webhookEvent.events[12].mode, 'active');
       expect(webhookEvent.events[12].timestamp, 1462629479859);
@@ -257,8 +244,8 @@ void main() {
     });
     test('AccountLinkEvent, SourceUser', () {
       expect(webhookEvent.events[13], isA<AccountLinkEvent>());
-      expect(webhookEvent.events[13].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[13].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[13].type, 'accountLink');
       expect(webhookEvent.events[13].mode, 'active');
       expect(webhookEvent.events[13].timestamp, 1462629479859);
@@ -269,13 +256,12 @@ void main() {
           'U206d25c2ea6bd87c17655609a1c37cb8');
 
       expect(webhookEvent.events[13].link.result, 'ok');
-      expect(
-          webhookEvent.events[13].link.nonce, 'Vb771wDYtXuammLszK6h9A');
+      expect(webhookEvent.events[13].link.nonce, 'Vb771wDYtXuammLszK6h9A');
     });
     test('MessageEvent, SourceGroup with userId, TextMessage', () {
       expect(webhookEvent.events[14], isA<MessageEvent>());
-      expect(webhookEvent.events[14].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[14].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[14].type, 'message');
       expect(webhookEvent.events[14].mode, 'active');
       expect(webhookEvent.events[14].timestamp, 1462629479859);
@@ -294,8 +280,8 @@ void main() {
     });
     test('MessageEvent, SourceRoom with userId, TextMessage', () {
       expect(webhookEvent.events[15], isA<MessageEvent>());
-      expect(webhookEvent.events[15].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[15].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[15].type, 'message');
       expect(webhookEvent.events[15].mode, 'active');
       expect(webhookEvent.events[15].timestamp, 1462629479859);
@@ -314,8 +300,8 @@ void main() {
     });
     test('PostbackEvent, SourceUser, with date params', () {
       expect(webhookEvent.events[16], isA<PostbackEvent>());
-      expect(webhookEvent.events[16].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[16].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[16].type, 'postback');
       expect(webhookEvent.events[16].mode, 'active');
       expect(webhookEvent.events[16].timestamp, 1462629479859);
@@ -331,8 +317,8 @@ void main() {
     });
     test('PostbackEvent, SourceUser, with date params', () {
       expect(webhookEvent.events[17], isA<PostbackEvent>());
-      expect(webhookEvent.events[17].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[17].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[17].type, 'postback');
       expect(webhookEvent.events[17].mode, 'active');
       expect(webhookEvent.events[17].timestamp, 1462629479859);
@@ -348,8 +334,8 @@ void main() {
     });
     test('PostbackEvent, SourceUser, with date params', () {
       expect(webhookEvent.events[18], isA<PostbackEvent>());
-      expect(webhookEvent.events[18].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[18].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[18].type, 'postback');
       expect(webhookEvent.events[18].mode, 'active');
       expect(webhookEvent.events[18].timestamp, 1462629479859);
@@ -361,13 +347,13 @@ void main() {
 
       expect(webhookEvent.events[18].postback.data,
           'action=buyItem&itemId=123123&color=red');
-      expect(webhookEvent.events[18].postback.params.datetime,
-          '2013-04-01T10:00');
+      expect(
+          webhookEvent.events[18].postback.params.datetime, '2013-04-01T10:00');
     });
     test('ThingsEvent, SourceUser, link', () {
       expect(webhookEvent.events[19], isA<ThingsEvent>());
-      expect(webhookEvent.events[19].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[19].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[19].type, 'things');
       expect(webhookEvent.events[19].mode, 'active');
       expect(webhookEvent.events[19].timestamp, 1462629479859);
@@ -394,12 +380,11 @@ void main() {
       expect(webhookEvent.events[20].source.groupId, 'C4af4980629...');
 
       expect(webhookEvent.events[20].joined.members.length, 2);
+      expect(webhookEvent.events[20].joined.members[0], isA<SourceUser>());
       expect(
-          webhookEvent.events[20].joined.members[0], isA<SourceUser>());
-      expect(webhookEvent.events[20].joined.members[0].userId,
-          'U4af4980629...');
-      expect(webhookEvent.events[20].joined.members[1].userId,
-          'U91eeaf62d9...');
+          webhookEvent.events[20].joined.members[0].userId, 'U4af4980629...');
+      expect(
+          webhookEvent.events[20].joined.members[1].userId, 'U91eeaf62d9...');
     });
     test('MemberLeftEvent', () {
       expect(webhookEvent.events[21], isA<MemberLeftEvent>());
@@ -413,15 +398,13 @@ void main() {
 
       expect(webhookEvent.events[21].left.members.length, 2);
       expect(webhookEvent.events[21].left.members[0], isA<SourceUser>());
-      expect(webhookEvent.events[21].left.members[0].userId,
-          'U4af4980629...');
-      expect(webhookEvent.events[21].left.members[1].userId,
-          'U91eeaf62d9...');
+      expect(webhookEvent.events[21].left.members[0].userId, 'U4af4980629...');
+      expect(webhookEvent.events[21].left.members[1].userId, 'U91eeaf62d9...');
     });
     test('ThingsEvent, SourceUser, unlink', () {
       expect(webhookEvent.events[22], isA<ThingsEvent>());
-      expect(webhookEvent.events[22].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[22].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[22].type, 'things');
       expect(webhookEvent.events[22].mode, 'active');
       expect(webhookEvent.events[22].timestamp, 1462629479859);
@@ -437,8 +420,8 @@ void main() {
     });
     test('MessageEvent, SourceUser, FileMessage', () {
       expect(webhookEvent.events[23], isA<MessageEvent>());
-      expect(webhookEvent.events[23].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[23].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[23].type, 'message');
       expect(webhookEvent.events[23].mode, 'active');
       expect(webhookEvent.events[23].timestamp, 1462629479859);
@@ -456,8 +439,8 @@ void main() {
     });
     test('ThingsEvent, SourceUser, scenarioResult', () {
       expect(webhookEvent.events[24], isA<ThingsEvent>());
-      expect(webhookEvent.events[24].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[24].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[24].type, 'things');
       expect(webhookEvent.events[24].mode, 'active');
       expect(webhookEvent.events[24].timestamp, 1547817848122);
@@ -472,21 +455,17 @@ void main() {
       expect(webhookEvent.events[24].things.deviceId, 't2c449c9d1');
       expect(webhookEvent.events[24].things.result.scenarioId, 'XXX');
       expect(webhookEvent.events[24].things.result.revision, 2);
-      expect(webhookEvent.events[24].things.result.startTime,
-          1547817845950);
+      expect(webhookEvent.events[24].things.result.startTime, 1547817845950);
+      expect(webhookEvent.events[24].things.result.endTime, 1547817845952);
+      expect(webhookEvent.events[24].things.result.resultCode, 'success');
       expect(
-          webhookEvent.events[24].things.result.endTime, 1547817845952);
-      expect(
-          webhookEvent.events[24].things.result.resultCode, 'success');
-      expect(
-          webhookEvent.events[24].things.result.bleNotificationPayload,
-          'AQ==');
+          webhookEvent.events[24].things.result.bleNotificationPayload, 'AQ==');
       expect(webhookEvent.events[24].things.result.actionResults[0].type,
           'binary');
-      expect(webhookEvent.events[24].things.result.actionResults[0].data,
-          '/w==');
-      expect(webhookEvent.events[24].things.result.actionResults[1].type,
-          'void');
+      expect(
+          webhookEvent.events[24].things.result.actionResults[0].data, '/w==');
+      expect(
+          webhookEvent.events[24].things.result.actionResults[1].type, 'void');
     });
     test('UnsendEvent', () {
       expect(webhookEvent.events[25], isA<UnsendEvent>());
@@ -504,8 +483,8 @@ void main() {
     });
     test('VideoPlayCompleteEvent', () {
       expect(webhookEvent.events[26], isA<VideoPlayCompleteEvent>());
-      expect(webhookEvent.events[26].replyToken,
-          'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
+      expect(
+          webhookEvent.events[26].replyToken, 'nHuyWiB7yP5Zw52FIkcQobQuGDXCTA');
       expect(webhookEvent.events[26].type, 'videoPlayComplete');
       expect(webhookEvent.events[26].mode, 'active');
       expect(webhookEvent.events[26].timestamp, 1462629479859);
@@ -515,10 +494,9 @@ void main() {
       expect(webhookEvent.events[26].source.userId,
           'U206d25c2ea6bd87c17655609a1c37cb8');
 
-      expect(webhookEvent.events[26].videoPlayComplete,
-          isA<VideoPlayComplete>());
-      expect(webhookEvent.events[26].videoPlayComplete.trackingId,
-          'track_id');
+      expect(
+          webhookEvent.events[26].videoPlayComplete, isA<VideoPlayComplete>());
+      expect(webhookEvent.events[26].videoPlayComplete.trackingId, 'track_id');
     });
   });
 }

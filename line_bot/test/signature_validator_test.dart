@@ -2,8 +2,7 @@ import 'package:line_bot/line_bot.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Test SignatureValidator', ()
-  {
+  group('Test SignatureValidator', () {
     SignatureValidator signatureValidator;
     setUp(() async {
       signatureValidator = SignatureValidator('channel_secret', false);
