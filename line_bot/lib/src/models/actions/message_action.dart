@@ -2,7 +2,7 @@ part of '../actions.dart';
 
 @JsonSerializable()
 class MessageAction {
-  @JsonKey(name: 'type', defaultValue: 'message', required: true)
+  @JsonKey(name: 'type', defaultValue: 'message')
   String type;
   @JsonKey(name: 'label')
   String label;

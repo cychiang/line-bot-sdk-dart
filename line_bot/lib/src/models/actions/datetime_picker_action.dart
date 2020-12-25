@@ -2,13 +2,13 @@ part of '../actions.dart';
 
 @JsonSerializable()
 class DatetimePickerAction {
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'type', defaultValue: 'datetimepicker')
   String type;
   @JsonKey(name: 'label')
   String label;
-  @JsonKey(name: 'data')
+  @JsonKey(name: 'data', required: true)
   String data;
-  @JsonKey(name: 'mode')
+  @JsonKey(name: 'mode', required: true)
   String mode;
   @JsonKey(name: 'initial')
   String initial;

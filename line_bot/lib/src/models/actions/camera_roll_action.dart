@@ -2,9 +2,9 @@ part of '../actions.dart';
 
 @JsonSerializable()
 class CameraRollAction {
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'type', defaultValue: 'cameraRoll')
   String type;
-  @JsonKey(name: 'label')
+  @JsonKey(name: 'label', required: true)
   String label;
 
   CameraRollAction({this.type, this.label});

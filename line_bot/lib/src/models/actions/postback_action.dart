@@ -2,7 +2,7 @@ part of '../actions.dart';
 
 @JsonSerializable()
 class PostbackAction {
-  @JsonKey(name: 'type', defaultValue: 'postback', required: true)
+  @JsonKey(name: 'type', defaultValue: 'postback')
   String type;
   @JsonKey(name: 'label')
   String label;

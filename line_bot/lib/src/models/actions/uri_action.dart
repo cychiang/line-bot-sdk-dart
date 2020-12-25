@@ -15,7 +15,7 @@ class AltUri {
 
 @JsonSerializable()
 class UriAction {
-  @JsonKey(name: 'type', defaultValue: 'uri', required: true)
+  @JsonKey(name: 'type', defaultValue: 'uri')
   String type;
   @JsonKey(name: 'label')
   String label;

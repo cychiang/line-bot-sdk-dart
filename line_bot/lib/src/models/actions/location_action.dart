@@ -2,9 +2,9 @@ part of '../actions.dart';
 
 @JsonSerializable()
 class LocationAction {
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'type', defaultValue: 'location')
   String type;
-  @JsonKey(name: 'label')
+  @JsonKey(name: 'label', required: true)
   String label;
 
   LocationAction({this.type, this.label});
