@@ -5,9 +5,6 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:line_bot/line_bot.dart';
 
-import '../models/messages.dart';
-import '../models/profile.dart';
-
 class LineBotApi {
   static const defaultApiEndpoint = 'https://api.line.me';
   static const defaultApiDataEndpoint = 'https://api-data.line.me';
@@ -61,14 +58,18 @@ class LineBotApi {
     return followers;
   }
 
-  Future<http.Response> _post(String url, dynamic body) async {
-    var response =
-        await http.post(url, headers: headers, body: jsonEncode(body));
-    return response;
+  Future<BotInfo> getBotInfo() async {
+    BotInfo botInfo;
+    var response = await _get(endpoint + '/v2/bot/info');
+    if (response.statusCode == HttpStatus.ok) {
+      botInfo = BotInfo.fromJson(jsonDecode(response.body));
+    }
+    return botInfo;
   }
 
-  Future<http.Response> _get(String url) async {
-    var response = await http.get(url);
-    return response;
-  }
+  Future<http.Response> _post(String url, dynamic body) async =>
+      await http.post(url, headers: headers, body: jsonEncode(body));
+
+  Future<http.Response> _get(String url) async =>
+      await http.get(url, headers: headers);
 }

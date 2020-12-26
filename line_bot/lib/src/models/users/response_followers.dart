@@ -1,4 +1,4 @@
-part of '../profile.dart';
+part of '../users.dart';
 
 @JsonSerializable()
 class Followers {

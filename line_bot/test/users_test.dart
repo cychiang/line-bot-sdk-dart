@@ -6,7 +6,7 @@ import 'package:mock_web_server/mock_web_server.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Test getProfile', () {
+  group('Test get user profile and followers', () {
     MockWebServer server;
     var dispatcher = (HttpRequest request) async {
       if (request.uri.path == '/v2/bot/followers/ids' &&
