@@ -12,7 +12,10 @@ class SignatureValidator {
       : channelSecret = utf8.encode(channelSecret),
         skipValidator = skipValidator;
 
-  bool validate(String body, String signature) {
+  /// Validate the message [body] with [signature]
+  bool validate(String body, String signature) => _validate(body, signature);
+
+  bool _validate(String body, String signature) {
     if (skipValidator) return true;
     var genSignature = Hmac(sha256, channelSecret);
     var digest = genSignature.convert(utf8.encode(body));
@@ -22,10 +25,16 @@ class SignatureValidator {
 
 class WebhookParser {
   SignatureValidator signatureValidator;
+
+  /// Initial WebhookParser by passing [channelSecret]
   WebhookParser(String channelSecret, {bool skipValidator = false})
       : signatureValidator = SignatureValidator(channelSecret, skipValidator);
 
-  WebhookEvent parser(String body, String signature) {
+  /// Pass request body as Json String to [body] along with [signature]
+  WebhookEvent parser(String body, String signature) =>
+      _parser(body, signature);
+
+  WebhookEvent _parser(String body, String signature) {
     if (!signatureValidator.validate(body, signature)) {
       throw InvalidSignatureError('Invalid signature. signature=$signature');
     }

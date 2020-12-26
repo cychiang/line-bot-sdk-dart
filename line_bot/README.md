@@ -1,5 +1,7 @@
 Library of the LINE Messaging API for Dart 
 
+[![pub package](https://img.shields.io/pub/v/line_bot.svg?style=flat&color=brightgreen)](https://pub.dev/packages/line_bot)
+
 **IMPORTANT: This is not an official SDK by LINE**
 
 ## Introduction

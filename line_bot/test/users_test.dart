@@ -7,6 +7,7 @@ import 'package:test/test.dart';
 
 void main() {
   group('Test get user profile and followers', () {
+    LineBotApi lineBotApi;
     MockWebServer server;
     var dispatcher = (HttpRequest request) async {
       if (request.uri.path == '/v2/bot/followers/ids' &&
@@ -41,14 +42,14 @@ void main() {
     setUp(() async {
       server = new MockWebServer();
       server.dispatcher = dispatcher;
-      server.start();
+      await server.start();
+      lineBotApi = LineBotApi('channel_secret',
+          endpoint: '${server.url.substring(0, server.url.length - 1)}');
     });
     tearDown(() {
       server.shutdown();
     });
     test('getProfile', () async {
-      var lineBotApi = LineBotApi('channel_secret',
-          endpoint: '${server.url.substring(0, server.url.length - 1)}');
       var profile = await lineBotApi.getProfile('U4af4980629');
       expect(profile.displayName, 'LINE taro');
       expect(profile.userId, 'U4af4980629');
@@ -57,16 +58,12 @@ void main() {
       expect(profile.statusMessage, 'Hello, LINE!');
     });
     test('getFollowers without next token', () async {
-      var lineBotApi = LineBotApi('channel_secret',
-          endpoint: '${server.url.substring(0, server.url.length - 1)}');
       var followers = await lineBotApi.getFollowers();
       expect(followers.userIds[0], '123');
       expect(followers.userIds[1], '456');
       expect(followers.userIds[2], '789');
     });
     test('getFollowers with next token', () async {
-      var lineBotApi = LineBotApi('channel_secret',
-          endpoint: '${server.url.substring(0, server.url.length - 1)}');
       var followers = await lineBotApi.getFollowers();
       expect(followers.userIds[0], '123');
       expect(followers.userIds[1], '456');

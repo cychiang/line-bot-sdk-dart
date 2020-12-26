@@ -1,5 +1,8 @@
 name: line_bot
-description: Library of the LINE Messaging API for Dart. The Library follows the LINE official Messaging API document and helps you to build your Bot much simpler and easier.
+description: >-
+  Library of the LINE Messaging API for Dart.
+  The Library follows the LINE official Messaging API document and
+  helps you to build your Bot much simpler and easier.
 version: 0.0.2
 repository: https://github.com/cychiang/line-bot-sdk-dart
 issue_tracker: https://github.com/cychiang/line-bot-sdk-dart/issues
