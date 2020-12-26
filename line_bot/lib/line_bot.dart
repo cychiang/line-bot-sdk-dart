@@ -9,4 +9,4 @@ export 'src/models/info.dart';
 export 'src/models/messages.dart';
 export 'src/models/users.dart';
 
-const version = '0.0.1';
+const version = '0.0.2';

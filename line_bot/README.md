@@ -15,6 +15,8 @@ The library is based on the official [LINE Messaging API Document][line_messagin
 - [x] Support parser and test cases for [webhook event objects][webhook_event_objects]
 - [x] Validation with signature from `x-line-signature`
 - [x] Reply message with TextMessage
+- [x] Get Bot Info
+- [x] Get user profile and followers
 
 [webhook_event_objects]: https://developers.line.biz/en/reference/messaging-api/#webhook-event-objects
 
