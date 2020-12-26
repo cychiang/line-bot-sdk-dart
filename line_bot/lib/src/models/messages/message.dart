@@ -6,6 +6,8 @@ class Message {
   String type;
   @JsonKey(name: 'text')
   String text;
+  @JsonKey(name: 'quickReply')
+  QuickReply quickReply;
 
   Message({this.type, this.text});
 

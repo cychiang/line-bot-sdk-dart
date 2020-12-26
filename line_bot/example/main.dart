@@ -24,8 +24,7 @@ Future main() async {
 
 void handleRequest(HttpRequest request, WebhookParser webhookParser,
     LineBotApi lineBotApi) async {
-  var message;
-  var replyMessage;
+  WebhookEvent message;
   var response = request.response;
   var content = await utf8.decoder.bind(request).join();
   try {
@@ -39,12 +38,10 @@ void handleRequest(HttpRequest request, WebhookParser webhookParser,
     return;
   }
   if (message.events.isNotEmpty) {
-    replyMessage = ReplyMessage(
-        replyToken: message.events[0].replyToken,
-        messages: [
-          Message(type: 'text', text: message.events[0].message.text)
-        ]);
-    await lineBotApi.replyMessage(replyMessage);
+    var messages = [
+      Message(type: 'text', text: message.events[0].message.text)
+    ];
+    await lineBotApi.replyMessage(message.events[0].replyToken, messages);
   }
   response
     ..statusCode = HttpStatus.ok
