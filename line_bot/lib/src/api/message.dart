@@ -1,11 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:line_bot/line_bot.dart';
 
 class LineBotApi {
+  /// Http Status code
+  static const httpStatusOk = 200;
+
   /// Default value for [endpoint], [dataEndpoint] and [timeout] if not set.
   static const defaultApiEndpoint = 'https://api.line.me';
   static const defaultApiDataEndpoint = 'https://api-data.line.me';
@@ -70,7 +72,7 @@ class LineBotApi {
   Future<Profile> _getProfile(String userId) async {
     Profile profile;
     var response = await _get(endpoint + '/v2/bot/profile/${userId}');
-    if (response.statusCode == HttpStatus.ok) {
+    if (response.statusCode == httpStatusOk) {
       profile = Profile.fromJson(jsonDecode(response.body));
     }
     return profile;
@@ -81,7 +83,7 @@ class LineBotApi {
     var response = await _get((next != null)
         ? endpoint + '/v2/bot/followers/ids?start=${next}'
         : endpoint + '/v2/bot/followers/ids');
-    if (response.statusCode == HttpStatus.ok) {
+    if (response.statusCode == httpStatusOk) {
       followers = Followers.fromJson(jsonDecode(response.body));
     }
     return followers;
@@ -90,7 +92,7 @@ class LineBotApi {
   Future<BotInfo> _getBotInfo() async {
     BotInfo botInfo;
     var response = await _get(endpoint + '/v2/bot/info');
-    if (response.statusCode == HttpStatus.ok) {
+    if (response.statusCode == httpStatusOk) {
       botInfo = BotInfo.fromJson(jsonDecode(response.body));
     }
     return botInfo;
