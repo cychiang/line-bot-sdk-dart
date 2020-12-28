@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:line_bot/line_bot.dart';
+import 'package:line_bot/src/models/group.dart';
 
 class LineBotApi {
   /// Http Status code
@@ -52,10 +53,14 @@ class LineBotApi {
 
   /// Get Bot's followers, pass next token to [next] if that is an available
   /// next token in the Followers object.
-  Future<Followers> getFollowers({String next}) => _getFollowers(next: next);
+  Future<Followers> getFollowers([String next]) => _getFollowers(next);
 
   /// Get Bot info
   Future<BotInfo> getBotInfo() => _getBotInfo();
+
+  /// Get group summary
+  Future<GroupSummary> getGroupSummary(String groupId) =>
+      _getGroupSummary(groupId);
 
   Future<http.Response> _replyMessage(
       String replyToken, List<Message> messages) async {
@@ -78,7 +83,7 @@ class LineBotApi {
     return profile;
   }
 
-  Future<Followers> _getFollowers({String next}) async {
+  Future<Followers> _getFollowers([String next]) async {
     Followers followers;
     var response = await _get((next != null)
         ? endpoint + '/v2/bot/followers/ids?start=${next}'
@@ -96,6 +101,15 @@ class LineBotApi {
       botInfo = BotInfo.fromJson(jsonDecode(response.body));
     }
     return botInfo;
+  }
+
+  Future<GroupSummary> _getGroupSummary(String groupId) async {
+    GroupSummary groupSummary;
+    var response = await _get(endpoint + '/v2/bot/group/${groupId}/summary');
+    if (response.statusCode == httpStatusOk) {
+      groupSummary = GroupSummary.fromJson(jsonDecode(response.body));
+    }
+    return groupSummary;
   }
 
   Future<http.Response> _post(String url, dynamic body) async =>

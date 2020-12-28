@@ -71,7 +71,7 @@ void main() {
       expect(followers.userIds[1], '456');
       expect(followers.userIds[2], '789');
       expect(followers.next, 'jsadhgf');
-      followers = await lineBotApi.getFollowers(next: followers.next);
+      followers = await lineBotApi.getFollowers(followers.next);
       expect(followers.userIds[0], '987');
       expect(followers.userIds[1], '654');
       expect(followers.userIds[2], '321');
