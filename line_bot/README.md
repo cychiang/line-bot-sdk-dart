@@ -1,5 +1,7 @@
 Library of the LINE Messaging API for Dart 
 
+[![pub package](https://img.shields.io/pub/v/line_bot.svg?style=flat&color=brightgreen)](https://pub.dev/packages/line_bot)
+
 **IMPORTANT: This is not an official SDK by LINE**
 
 ## Introduction
@@ -12,11 +14,14 @@ The library is based on the official [LINE Messaging API Document][line_messagin
 
 ## Implemented methods, events and messages
 
-- [x] Support parser and test cases for [webhook event objects][webhook_event_objects]
-- [x] Validation with signature from `x-line-signature`
-- [x] Reply message with TextMessage
-- [x] Get Bot Info
-- [x] Get user profile and followers
+* Validation with signature from `x-line-signature`
+* Support parser and test cases for [webhook event objects][webhook_event_objects]
+* Support the following APIs:
+  * [x] Reply message
+  * [ ] Push message (Not yet test)
+  * [x] Get user profile
+  * [x] Get bot info
+  * [x] Get bot followers
 
 [webhook_event_objects]: https://developers.line.biz/en/reference/messaging-api/#webhook-event-objects
 
@@ -49,7 +54,7 @@ Future main() async {
 
 void handleRequest(HttpRequest request, WebhookParser webhookParser,
     LineBotApi lineBotApi) async {
-  var message;
+  WebhookEvent message;
   var response = request.response;
   var content = await utf8.decoder.bind(request).join();
   try {
