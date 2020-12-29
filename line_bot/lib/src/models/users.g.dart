@@ -6,14 +6,14 @@ part of 'users.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Followers _$FollowersFromJson(Map<String, dynamic> json) {
-  return Followers(
+UserIds _$UserIdsFromJson(Map<String, dynamic> json) {
+  return UserIds(
     userIds: (json['userIds'] as List)?.map((e) => e as String)?.toList(),
     next: json['next'] as String,
   );
 }
 
-Map<String, dynamic> _$FollowersToJson(Followers instance) => <String, dynamic>{
+Map<String, dynamic> _$UserIdsToJson(UserIds instance) => <String, dynamic>{
       'userIds': instance.userIds,
       'next': instance.next,
     };
