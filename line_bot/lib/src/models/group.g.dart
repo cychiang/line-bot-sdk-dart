@@ -20,3 +20,13 @@ Map<String, dynamic> _$GroupSummaryToJson(GroupSummary instance) =>
       'groupName': instance.groupName,
       'pictureUrl': instance.pictureUrl,
     };
+
+Count _$CountFromJson(Map<String, dynamic> json) {
+  return Count(
+    count: json['count'] as int,
+  );
+}
+
+Map<String, dynamic> _$CountToJson(Count instance) => <String, dynamic>{
+      'count': instance.count,
+    };

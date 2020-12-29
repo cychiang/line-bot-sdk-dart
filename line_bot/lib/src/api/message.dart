@@ -62,9 +62,15 @@ class LineBotApi {
   Future<GroupSummary> getGroupSummary(String groupId) =>
       _getGroupSummary(groupId);
 
-  /// Get group member user ids
+  /// Get group member user ids with [groupId]. If there are more 100 users in
+  /// response. You will get [next] token in the payload. Use it to retrieve
+  /// more user ids.
   Future<UserIds> getGroupMemberIds(String groupId, [String next]) =>
       _getGroupMemberIds(groupId, next);
+
+  /// Get number of users in a group with [groupId]
+  Future<Count> getGroupMemberCount(String groupId) =>
+      _getGroupMemberCount(groupId);
 
   Future<http.Response> _replyMessage(
       String replyToken, List<Message> messages) async {
@@ -125,6 +131,16 @@ class LineBotApi {
       groupMemberIds = UserIds.fromJson(jsonDecode(response.body));
     }
     return groupMemberIds;
+  }
+
+  Future<Count> _getGroupMemberCount(String groupId) async {
+    Count count;
+    var response =
+        await _get(endpoint + '/v2/bot/group/${groupId}/members/count');
+    if (response.statusCode == httpStatusOk) {
+      count = Count.fromJson(jsonDecode(response.body));
+    }
+    return count;
   }
 
   Future<http.Response> _post(String url, dynamic body) async =>
